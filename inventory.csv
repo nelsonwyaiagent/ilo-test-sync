@@ -1,2 +1,2 @@
-ServerName,IP,Serial,Model,CPU,RAM_GB,BIOS
-Test-Server-01,10.10.17.1,SGHD2LMDNQ,ProLiant DL385 Gen11,2x AMD EPYC 9224 24-Core Processor                ,256,A55 v2.40 (03/21/2025)
+ServerName,IP,Serial,Model,CPU_Sockets,CPU_Model,RAM_GB,BIOS
+Test-Server-01,10.10.17.1,SGHD2LMDNQ,ProLiant DL385 Gen11,2,AMD EPYC 9224 24-Core Processor                ,256,A55 v2.40 (03/21/2025)
