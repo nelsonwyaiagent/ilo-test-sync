@@ -15,18 +15,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS for a professional look
+# Custom CSS
 st.markdown("""
     <style>
-    .main {
-        background-color: #f5f7f9;
-    }
-    .stMetric {
-        background-color: #ffffff;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
+    .main { background-color: #f5f7f9; }
+    .stMetric { background-color: #ffffff; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
     </style>
     """, unsafe_allow_html=True)
 
@@ -48,21 +41,20 @@ st.markdown("Real-time hardware specifications synced from iLO management interf
 df = load_data()
 
 if df is not None:
-    # --- TOP METRICS ---
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     
     total_servers = len(df)
-    # We now count unique sockets/servers instead of cores
-    total_sockets = total_servers # Simplified: 1 server = 1 entry in this list
     total_ram = df['RAM_GB'].sum()
+    # Calculate average of averages
+    avg_pwr_total = df['AvgPower_W'].astype(float).mean() if 'AvgPower_W' in df.columns else 0
     
     col1.metric("Total Servers", total_servers)
-    col2.metric("Total CPU Sockets", total_sockets)
-    col3.metric("Total Memory", f"{total_ram} GB")
+    col2.metric("Total Memory", f"{total_ram} GB")
+    col3.metric("Avg Power (Cluster)", f"{avg_pwr_total:.1f} W")
+    col4.metric("Status", "Online")
 
     st.markdown("---")
 
-    # --- SEARCH AND FILTER ---
     st.subheader("📦 Detailed Inventory")
     search_term = st.text_input("🔍 Search by Server Name, IP, or Model", "")
     
@@ -71,9 +63,7 @@ if df is not None:
     else:
         filtered_df = df
 
-    # Display the table
     st.dataframe(filtered_df, use_container_width=True, hide_index=True)
-    
     st.caption(f"Last synced from GitHub: {RAW_URL}")
 else:
     st.warning("Waiting for inventory data to be uploaded to GitHub...")
