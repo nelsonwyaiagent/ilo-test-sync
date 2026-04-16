@@ -52,12 +52,12 @@ if df is not None:
     col1, col2, col3 = st.columns(3)
     
     total_servers = len(df)
-    # Extract numeric part of CPU (e.g., "2x AMD" -> 2)
-    total_cores = sum([int(x.split('x')[0]) if 'x' in str(x) else 0 for x in df['CPU']])
+    # We now count unique sockets/servers instead of cores
+    total_sockets = total_servers # Simplified: 1 server = 1 entry in this list
     total_ram = df['RAM_GB'].sum()
     
     col1.metric("Total Servers", total_servers)
-    col2.metric("Total CPU Cores", f"{total_cores} Cores")
+    col2.metric("Total CPU Sockets", total_sockets)
     col3.metric("Total Memory", f"{total_ram} GB")
 
     st.markdown("---")
