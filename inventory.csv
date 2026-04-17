@@ -1,4 +1,4 @@
-ServerName,IP,Serial,Model,CPU,RAM_GB,BIOS,AvgPower_W
-Test-Server-01,10.10.17.1,SGHD2LMDNQ,ProLiant DL385 Gen11,2x AMD EPYC 9224 24-Core Processor                ,256,A55 v2.40 (03/21/2025),669
-Server-105-4,10.10.105.4,SGH004WRCW,ProLiant DL380 Gen10,2x Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz,384,U30 v2.36 (07/16/2020),140
-Server-105-5,10.10.105.5,SGH004WRCR,ProLiant DL380 Gen10,2x Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz,384,U30 v3.32 (08/29/2024),140
+ServerName,IP,Serial,Model,CPU,RAM_GB,BIOS,AvgPower_W,Warnings,Errors
+Test-Server-01,10.10.17.1,SGHD2LMDNQ,ProLiant DL385 Gen11,2x AMD EPYC 9224 24-Core Processor                ,256,A55 v2.40 (03/21/2025),545,None,None
+Server-105-4,10.10.105.4,SGH004WRCW,ProLiant DL380 Gen10,2x Intel(R) Xeon(R) Silver 4216 CPU @ 2.10GHz,384,U30 v2.36 (07/16/2020),0,Memory,None
+Server-105-5,10.10.105.5,SGH004WRCR,ProLiant DL380 Gen10,2x Intel(R) Xeon(R) Silver 4208 CPU @ 2.10GHz,384,U30 v3.32 (08/29/2024),139,None,None
